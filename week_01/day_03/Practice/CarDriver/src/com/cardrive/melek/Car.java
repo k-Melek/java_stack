@@ -23,8 +23,11 @@ public class Car {
 	}
 
 	public void setGas(Integer gas) {
-		this.gas = gas;
+        if (gas >= 0) {
+            this.gas = gas;
+        } else {
+            System.out.println("Game over");
+        }
 	}
-	
 	
 }

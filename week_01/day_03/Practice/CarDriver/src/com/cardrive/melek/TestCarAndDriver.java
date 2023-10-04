@@ -15,7 +15,12 @@ public class TestCarAndDriver {
 		melek.refuel();
 		melek.refuel();
 		melek.refuel();
-		
+		melek.useBoosters();
+		melek.useBoosters();
+		melek.useBoosters();
+		melek.drive();
+		melek.drive();
+		melek.drive();
 	}
 
 }
