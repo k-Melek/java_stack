@@ -28,26 +28,26 @@ console.log(b); // [1,2,3,4,10,20]
 
 // Object Literal
 var person = {
-    name: "Bob",
-    favFood: "🍕",
-    age: 28,
+  name: "Bob",
+  favFood: "🍕",
+  age: 28,
 };
 
 // var somePerson = new Person( )
 
 var n1 = {
-    value: 11,
-    next: null,
+  value: 11,
+  next: null,
 };
 
 var n2 = {
-    value: 22,
-    next: null,
+  value: 22,
+  next: null,
 };
 
 var n3 = {
-    value: 33,
-    next: null,
+  value: 33,
+  next: null,
 };
 
 n1.next = n2;
@@ -74,16 +74,16 @@ n1.next.next = n3;
 // seeMilage()
 
 var n4 = {
-    value: 45,
-    next: null,
+  value: 45,
+  next: null,
 };
 
 // class for the Node
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
 var n5 = new Node(99);
@@ -98,30 +98,97 @@ console.log(n5);
 // class for the SLL
 // what will hold all the nodes
 class SLL {
-    constructor() {
-        this.head = null;
-    }
+  constructor() {
+    this.head = null;
+  }
 
-    // -- methods --
-    isEmpty() {
-        if (this.head) {
-            return false;
-        } else {
-            return true;
-        }
+  // -- methods --
+  isEmpty() {
+    if (this.head) {
+      return false;
+    } else {
+      return true;
     }
-    addToFront(n){
-      var newNode = new Node(n);
-      if (this.isEmpty()){
-        this.head = newNode;
-      } else {
-        newNode.next = this.head;
-        this.head = newNode;
+  }
+  addToFront(n) {
+    var newNode = new Node(n);
+    newNode = this.head;
+    this.head = newNode;
+    return this;
+  }
+
+  insertAtBack(data) {
+    var newBack = new Node(data);
+    if (this.isEmpty()) {
+      this.head = newBack;
+      return this;
+    }
+    var runner = this.head;
+    while(runner.next != null){
+      runner = runner.next;
+    }
+    runner.next= newBack;
+    return this;
+  }
+
+  read(){
+    var runner = this.head;
+    while(runner != null){
+      console.log(runner.value);
+      runner = runner.next;
+    }
+  }
+
+  contains(value) {
+    // Start pointer at the head
+    var runner = this.head;
+    // While we have a runner
+    while(runner){
+      if(runner.value ===  value){
+        return true;
       }
+      // Otherwise advance the runner
+      runner = runner.next
     }
+    return false;
+  }
+
+  removeFromFront() {
+    var temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+    return temp;
+  }
+
+  removeFromBack(){
+    // List is empty
+    if(this.isEmpty()){
+      return null;
+    }
+    // Only 1 node in list
+    if(this.head.next === null ) {
+      return this.removeFromFront();
+    }
+    var runner = this.head;
+    while(runner.next.next) {
+      runner = runner.next;
+    }
+    // after while loop finishes
+    var removedData = runner.next.value; // If removed item is need RETURN IT 
+    runner.next = null;
+    return removedData
+  }
+
 }
 
 var myCoolSLL = new SLL();
-console.log(myCoolSLL);
 
-console.log(myCoolSLL.isEmpty());
+myCoolSLL.addToFront(33);
+myCoolSLL.addToFront(11);
+myCoolSLL.addToFront(100);
+
+// console.log(myCoolSLL);
+
+// console.log(myCoolSLL.isEmpty());
+myCoolSLL.read()
+
