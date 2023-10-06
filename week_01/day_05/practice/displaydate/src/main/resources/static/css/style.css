@@ -1,0 +1,45 @@
+/* Reset default margin and padding for the entire page */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply some basic styles to the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 20px;
+    text-align: center;
+}
+
+/* Style the header (h1 element) */
+h1 {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    padding: 10px; /* Add some padding for spacing */
+}
+
+/* Style the unordered list */
+ul {
+    list-style: none;
+    display: flex; /* Display list items horizontally */
+    justify-content: center; /* Center align list items */
+    padding: 20px; /* Add spacing around the list */
+}
+
+/* Style the list items (li elements) */
+li {
+    margin: 0 10px; /* Add spacing between list items */
+}
+
+/* Style links within list items */
+li a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #007bff; /* Blue link color */
+    font-weight: bold; /* Bold font for links */
+}
+
+/* Style links on hover */
+li a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
