@@ -23,8 +23,8 @@ var b = a;
 a.push(10);
 b.push(20);
 
-console.log(a); // [1,2,3,4,10]
-console.log(b); // [1,2,3,4,10,20]
+// console.log(a); // [1,2,3,4,10]
+// console.log(b); // [1,2,3,4,10,20]
 
 // Object Literal
 var person = {
@@ -93,7 +93,7 @@ var n6 = new Node(100);
 // console.log(n6);
 
 n5.next = n6;
-console.log(n5);
+// console.log(n5);
 
 // class for the SLL
 // what will hold all the nodes
@@ -111,11 +111,12 @@ class SLL {
     }
   }
   addToFront(n) {
-    var newNode = new Node(n);
-    newNode = this.head;
-    this.head = newNode;
+    var newNode = new Node(n); // Create a new node with the given value.
+    newNode.next = this.head; // Set the 'next' of the new node to the current head.
+    this.head = newNode; // Update the head to the new node.
     return this;
   }
+  
 
   insertAtBack(data) {
     var newBack = new Node(data);
@@ -179,6 +180,24 @@ class SLL {
     return removedData
   }
 
+  delete(data) {
+    if(this.head == null) {
+      return;
+    }
+    if(this.head.value == data) {
+      this.head = this.head.next;
+      return;
+    }
+
+    while(this.head.next) {
+      if(this.head.next.value == data ){
+        this.head.next =this.head.next.next;
+        return;
+      }
+      this.head = this.head.next
+    }
+  }
+
 }
 
 var myCoolSLL = new SLL();
@@ -190,5 +209,7 @@ myCoolSLL.addToFront(100);
 // console.log(myCoolSLL);
 
 // console.log(myCoolSLL.isEmpty());
+myCoolSLL.read()
+myCoolSLL.delete(11)
 myCoolSLL.read()
 
