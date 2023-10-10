@@ -18,9 +18,25 @@ class BST {
       this.root = null;
   }
 
+
+  // test empty
   isEmpty() {
       return this.root === null;
   }
+
+
+  // insertion
+
+  insert(val) {
+    const newNode = new BSTNode(val);
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      this._insertRecursive(this.root, newNode);
+    }
+  }
+
+
 
   // Iterative !
   getSmallestFromSubtree() {
@@ -52,4 +68,38 @@ class BST {
     // Recursive call on the method !
     return this.getLargestFromSubtree(current.right);
   }
+
+  find(target, current) {
+    
+
+    if(current === null) {
+      return false;
+    }
+
+    if(current.val === target){
+      return true;
+    }
+
+    const lookInLeft = this.find(target, current.left);
+    const lookInRight = this.find(target, current.right);
+    
+    const result = lookInLeft || lookInRight;
+
+    return result;
+
+  }
+
 }
+
+const bst = new BST();
+bst.insert(10);
+bst.insert(5);
+bst.insert(15);
+bst.insert(3);
+bst.insert(7);
+bst.insert(12);
+bst.insert(18);
+
+
+console.log(bst.find(18, bst.root));
+console.log(bst.find(20, bst.root));
