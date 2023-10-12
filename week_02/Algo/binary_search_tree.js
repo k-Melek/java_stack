@@ -17,7 +17,21 @@ class BST {
       branches downward from here. */
     this.root = null;
   }
+  // SHow method
+  print(node = this.root, spaceCnt = 0, spaceIncr = 10) {
+    if (!node) {
+      return;
+    }
 
+    spaceCnt += spaceIncr;
+    this.print(node.right, spaceCnt);
+
+    console.log(
+      " ".repeat(spaceCnt < spaceIncr ? 0 : spaceCnt - spaceIncr) + `${node.val}`
+    );
+
+    this.print(node.left, spaceCnt);
+  }
   // test empty
   isEmpty() {
     return this.root === null;
@@ -104,6 +118,21 @@ class BST {
       }
     }
   }
+
+  deleteSmallest(current = this.root){
+    
+    if(current.left === null){
+      this.root = this.right;
+      return;
+    }
+
+    while (current.left.left) {
+      current = current.left;
+    }
+    current.left = current.left.right;
+
+  }
+
 }
 
 const bst = new BST();
@@ -116,9 +145,12 @@ bst.insert(new BSTNode(10));
 bst.insert(new BSTNode(22));
 bst.insert(new BSTNode(35));
 bst.insert(new BSTNode(70));
-bst.insert(new BSTNode(12));
+// bst.insert(new BSTNode(12));
 bst.insert(new BSTNode(48));
+bst.print();
+bst.deleteSmallest();
+bst.print();
 
-console.log(bst);
+// console.log(bst);
 // console.log(bst.find(18));
 // console.log(bst.find(20));

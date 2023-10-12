@@ -21,7 +21,7 @@
 <!-- change to match your file/naming structure -->
 </head>
 <body>
-	<h1>List of travel expenses</h1>
+	<h1 class="text-center p-5">List of travel expenses</h1>
 	<hr />
 	<div class="container">
 		<table class="table table-bordered table-striped">
@@ -48,7 +48,7 @@
 									<button class="btn btn-danger mx-2">Delete</button>
 								</form>
 								
-								<a href="/edit/${oneTravel.id}" class="btn btn-primary">Edit</a>
+								<a href="/edit/${oneTravel.id}" class="btn btn-primary mx-2">Edit</a>
 							</div>
 						</td>
 
